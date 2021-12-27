@@ -5,4 +5,4 @@ Installation:
 ```./setup.sh```
 
 Usage:
-./static.sh [option] [full file path including file name]
+```./static.sh [option] [full file path including file name]```
