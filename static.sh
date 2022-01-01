@@ -50,16 +50,17 @@ check_valid_input
 #APKTools
 if [[ $OPTION == "-1" ]]
 then	
-	java -jar res/apktool.jar -r -f d $APP_LOC -o output
-	java -jar res/apktool.jar -r b output
-	sh res/dex2jar-2.0/d2j-dex2jar.sh -d output/build/apk/classes.dex -f -o $PROJECT_DIR/results/result.jar
+	#java -jar res/apktool.jar -r -f d $APP_LOC -o output
+	#java -jar res/apktool.jar -r b output
+	sh res/dex2jar/d2j-dex2jar.sh -d $APP_LOC -f -o $PROJECT_DIR/results/result.jar
 	./res/findsecbugs-cli/findsecbugs.sh -progress -output $PROJECT_DIR/results/temp.json -sarif $PROJECT_DIR/results/result.jar
 	cat $PROJECT_DIR/results/temp.json | jq > $PROJECT_DIR/results/apktool_result.json
 	if [ -f classes-error.zip ]
 	then
 		rm classes-error.zip
 	fi
-	rm -rf output
+	#rm -rf output
+	rm $APP_NAME-error.zip
 	rm $PROJECT_DIR/results/temp.json
 	rm $PROJECT_DIR/results/result.jar
 	
