@@ -57,10 +57,9 @@ then
 	cat $PROJECT_DIR/results/temp.json | jq > $PROJECT_DIR/results/apktool_result.json
 	if [ -f classes-error.zip ]
 	then
-		rm classes-error.zip
+		rm $APP_NAME-error.zip
 	fi
 	#rm -rf output
-	rm $APP_NAME-error.zip
 	rm $PROJECT_DIR/results/temp.json
 	rm $PROJECT_DIR/results/result.jar
 	
