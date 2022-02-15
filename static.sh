@@ -47,7 +47,7 @@ check_valid_input(){
 
 check_valid_input
 
-#APKTools
+#FindSecBugs
 if [[ $OPTION == "-1" ]]
 then	
 	sh res/dex2jar/d2j-dex2jar.sh -d $APP_LOC -f -o $PROJECT_DIR/results/result.jar
@@ -72,7 +72,7 @@ then
 
 	python3 scripts/mass_static_analysis.py -s 0.0.0.0:8000 -k $API_KEY -d $APP_DIR
 	HASH=`curl -F "file=@/$APP_LOC" $API_URL/upload -H "Authorization:$API_KEY" | jq -r  ".hash"`
-	curl -X POST --url $API_URL/scan --data "scan_type=apk&file_name=$APP_NAME&hash=$HASH" -H "Authorization:$API_KEY" | jq > $PROJECT_DIR/results/mobsf_results.json
+	curl -X POST --url $API_URL/report_json --data "hash=$HASH" -H "Authorization:$API_KEY" | jq > $PROJECT_DIR/results/mobsf_results.json
 	sleep 1
 	kill $pid
 fi
