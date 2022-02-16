@@ -1,3 +1,5 @@
 *.pyc
 *.zip
-*.json
+apktool_result.json
+mobsf_results.json
+.vscode/
