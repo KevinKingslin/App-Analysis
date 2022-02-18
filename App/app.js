@@ -10,6 +10,10 @@ var app = express();
 var port = 8000;
 var hostname = "localhost";
 //middleware
+app.use(express.static(__dirname + "/frontend/dist"));
+// app.all("*", function (req, res) {
+//   res.status(200).sendFile(__dirname + "/frontend/dist/frontend/index.html");
+// });
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
 app.engine(
