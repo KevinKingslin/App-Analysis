@@ -21,6 +21,12 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "body-parser": "^1.19.2",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
