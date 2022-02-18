@@ -1,8 +1,8 @@
 #frontpage {
     margin: 0;
-    background-image: url("background.png");
+    /* background-image: url("background.png");
     background-size: cover;
-    background-repeat: no-repeat;   
+    background-repeat: no-repeat;    */
     padding: 0;
     width: 100vw;
     height: 100vh;
@@ -14,12 +14,3 @@
     width: 150px;
     min-width: unset;
 }
-
-.center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }

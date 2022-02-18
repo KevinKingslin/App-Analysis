@@ -1,0 +1,14 @@
+.example-form {
+    width: 300px;
+}
+
+#login {
+    margin: 0;
+    background-image: url("background.png");
+    background-size: cover;
+    background-repeat: no-repeat;   
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
