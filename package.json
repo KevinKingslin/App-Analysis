@@ -4,6 +4,7 @@
   "description": "Security analysis for iot devices",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon run app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/arghya17/App-Analysis#readme",
   "dependencies": {
     "@angular-devkit/build-angular": "^13.2.3",
+    "@angular/cli": "^13.2.4",
     "angular": "^1.8.2",
     "body-parser": "^1.19.2",
     "cookie-parser": "^1.4.6",
