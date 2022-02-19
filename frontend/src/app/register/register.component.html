@@ -28,7 +28,7 @@
             <mat-error *ngIf="repassword.invalid">{{getErrorMessage(repassword)}}</mat-error>
         </mat-form-field>
       </mat-card-content>
-      <button type="submit" mat-stroked-button color="primary" class="btn-block">Register</button>
+      <button type="submit" mat-stroked-button color="primary" class="btn-block" [disabled]="username.invalid || email.invalid || password.invalid || repassword.invalid">Register</button>
     </form>
   </mat-card>
 </div>
