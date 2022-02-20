@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 
@@ -27,7 +26,6 @@ import { RegisterComponent } from './register/register.component';
     AngularMaterialModule,
     ReactiveFormsModule, 
     FormsModule,
-    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
