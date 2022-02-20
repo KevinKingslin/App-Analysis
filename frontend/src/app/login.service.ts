@@ -11,7 +11,7 @@ export class LoginService {
 
   constructor(private HttpClient: HttpClient) { }
 
-  postLoginData(username: string, password: string){
+  PostLoginData(username: string, password: string){
     const headers = new HttpHeaders()
           .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json');
