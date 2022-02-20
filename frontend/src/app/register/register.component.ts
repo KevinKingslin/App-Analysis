@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators } from '@angular/forms';
+import { RegisterService } from '../register.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers: [RegisterService]
 })
 
 export class RegisterComponent {
@@ -15,6 +17,9 @@ export class RegisterComponent {
   
   hide = true
   
+  constructor(private RegisterService: RegisterService) {
+  }
+
   getErrorMessage(object: FormControl) {
     if (object.hasError('required')) {
       return 'You must enter a value';
@@ -30,4 +35,7 @@ export class RegisterComponent {
       return ''
   }
 
+  onSubmit(): void{
+    this.RegisterService.PostRegisterData(this.username.value, this.email.value,this.password.value)
+  }
 }

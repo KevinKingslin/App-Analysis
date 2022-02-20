@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators } from '@angular/forms';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [LoginService]
 })
 
 export class LoginComponent {
@@ -13,6 +15,9 @@ export class LoginComponent {
   
   hide = true
   
+  constructor(private LoginService: LoginService) {
+  }
+
   getErrorMessage(object: FormControl) {
     if (object.hasError('required')) {
       return 'You must enter a value';
@@ -22,4 +27,7 @@ export class LoginComponent {
       return ''
   }
 
+  onSubmit(): void{
+    this.LoginService.PostLoginData(this.username.value, this.password.value)
+  }
 }
