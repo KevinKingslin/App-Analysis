@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { json } from 'body-parser';
+import { Router } from 'express';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,7 @@ export class LoginService {
           .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json');
 
-    const LoginInfo = {"username": username, "password": password}
-    this.HttpClient.post('http://localhost:8000/api/login', LoginInfo, {
+    this.HttpClient.post('http://localhost:8000/api/login', { username, password }, {
       headers: headers
     }).subscribe(data => {
       console.log(data)

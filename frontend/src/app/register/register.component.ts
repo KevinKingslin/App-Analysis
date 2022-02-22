@@ -19,6 +19,12 @@ export class RegisterComponent {
   
   constructor(private RegisterService: RegisterService) {
   }
+  
+  SamePassword() : void{
+    if(this.password.value !== this.repassword.value){
+      this.repassword.setErrors({notsame : true})
+    }
+  }
 
   getErrorMessage(object: FormControl) {
     if (object.hasError('required')) {
@@ -30,6 +36,9 @@ export class RegisterComponent {
   
     if (object.hasError('minlength'))
       return 'Should have minimum 8 characters'
+
+    if (object.hasError('notsame'))
+      return 'Passwords are not same'
 
     else
       return ''

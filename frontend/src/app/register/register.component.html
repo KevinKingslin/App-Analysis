@@ -21,7 +21,7 @@
             <mat-error *ngIf="password.invalid">{{getErrorMessage(password)}}</mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Retype Password" [formControl]="repassword" required>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Retype Password" (input)="SamePassword()" [formControl]="repassword" required>
             <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>

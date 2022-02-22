@@ -16,8 +16,7 @@ export class RegisterService {
           .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json');
 
-    const RegisterInfo = {"username": username, "email":email, "password": password}
-    this.HttpClient.post('http://localhost:8000/api/register', RegisterInfo, {
+    this.HttpClient.post('http://localhost:8000/api/register', { username, email, password }, {
       headers: headers
     }).subscribe(data => {
       console.log(data)
