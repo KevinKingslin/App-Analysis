@@ -12,6 +12,7 @@ var UserLogin = async (req, res) => {
   var user = await User.findOne({ username }).lean();
 
   if (!user) {
+    res.status(400);
     return res.json({ status: "error", error: "Invalid Username/password" });
   }
   //password cannot be searched because bcrypt does not return the same hash everytime
@@ -23,6 +24,7 @@ var UserLogin = async (req, res) => {
       },
       jwt_secret
     );
+    res.status(202);
     return res.json({ status: "Ok", data: token }); //this token must be stored in the frontend
     //so that after login the backend can verify the data
   }
@@ -37,10 +39,12 @@ var changePassword = (req, res) => {
     var id = user._id;
 
     if (!newpassword || typeof newpassword != "string") {
+      res.status(400);
       return res.json({ status: "error", error: "Invalid password" });
     }
 
     if (newpassword.length < 6) {
+      res.status(400);
       return res.json({
         status: "error",
         error: "Password two small should be at least 7 characters",
@@ -53,8 +57,10 @@ var changePassword = (req, res) => {
         $set: { password: hashedPassword },
       }
     );
+    res.status(202);
     res.json({ status: "ok" });
   } catch (error) {
+    res.status(400);
     res.json({ status: "error", error: "somebody messed around the token" });
   }
 };

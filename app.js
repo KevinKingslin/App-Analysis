@@ -6,6 +6,7 @@ var hbs = require("express-handlebars");
 var path = require("path");
 var routes = require("./server/routes/index");
 var mongoose = require("mongoose");
+var cors = require("cors");
 
 var app = express();
 var port = 8000;
@@ -31,6 +32,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/user-db", {
 // );
 
 app.use(bodyParser.json());
+app.use(cors);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(morgan("common"));
