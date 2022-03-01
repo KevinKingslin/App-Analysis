@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators } from '@angular/forms';
+import { RegisterService } from '../register.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers: [RegisterService]
 })
 
 export class RegisterComponent {
@@ -15,6 +17,15 @@ export class RegisterComponent {
   
   hide = true
   
+  constructor(private RegisterService: RegisterService) {
+  }
+  
+  SamePassword() : void{
+    if(this.password.value !== this.repassword.value){
+      this.repassword.setErrors({notsame : true})
+    }
+  }
+
   getErrorMessage(object: FormControl) {
     if (object.hasError('required')) {
       return 'You must enter a value';
@@ -26,8 +37,14 @@ export class RegisterComponent {
     if (object.hasError('minlength'))
       return 'Should have minimum 8 characters'
 
+    if (object.hasError('notsame'))
+      return 'Passwords are not same'
+
     else
       return ''
   }
 
+  onSubmit(): void{
+    this.RegisterService.PostRegisterData(this.username.value, this.email.value,this.password.value)
+  }
 }

@@ -64,5 +64,5 @@ var changePassword = (req, res) => {
     res.json({ status: "error", error: "somebody messed around the token" });
   }
 };
-module.exports = UserLogin;
-module.exports = changePassword;
+module.exports.UserLogin = UserLogin;
+module.exports.changePassword = changePassword;
