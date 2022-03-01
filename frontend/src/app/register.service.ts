@@ -14,10 +14,9 @@ export class RegisterService {
 
   PostRegisterData(username: string, email: string, password: string){
     const headers = new HttpHeaders()
-          .set('Authorization', 'my-auth-token')
           .set('Content-Type', 'application/json');
 
-    this.HttpClient.post('http://localhost:8000/api/register', { username, email, password }, {
+    this.HttpClient.post('http://localhost:8000/register', { username, email, password }, {
       headers: headers
     }).subscribe((res) => {
       this.router.navigate(['/index'])
