@@ -46,8 +46,8 @@ var changePassword = (req, res) => {
         error: "Password two small should be at least 7 characters",
       });
     }
-    var hashedPassword = await bcrytpt.hash(newpassword, 10);
-    await User.updateOne(
+    var hashedPassword = bcrytpt.hash(newpassword, 10);
+    User.updateOne(
       { _id },
       {
         $set: { password: hashedPassword },
