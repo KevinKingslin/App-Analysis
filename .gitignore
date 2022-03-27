@@ -4,3 +4,4 @@ apktool_result.json
 mobsf_results.json
 node_modules
 .vscode/
+.env

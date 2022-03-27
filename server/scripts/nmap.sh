@@ -1,17 +1,12 @@
 #!/bin/bash
-clear
-cd Desktop/
-figlet "WELCOME TO NMAP"
-echo "********** BY SOHAN ***********"
-
-echo -n "Choose the scan to be performed
-         1.basic ip scan
-         2.specific port scan
-         3.aggresive  scan
-  ENTER the choice:"
+# echo -n "Choose the scan to be performed
+#          1.basic ip scan
+#          2.specific port scan
+#          3.aggresive  scan
+#   ENTER the choice:"
 read s
 case $s in
- 1) echo "Enter the ip or website to be scanned:"
+ 1) #echo "Enter the ip or website to be scanned:"
     read ip
   
    read -r -p "Do you want to save the results to a file? [y/N] :" response
@@ -23,7 +18,7 @@ case $s in
     fi
     ;;
 
-  2) echo "Enter the ports to be scanned:"
+  2) #echo "Enter the ports to be scanned:"
     read qw
     echo "Enter the ip or website to be scanned:"
     read ip
@@ -35,7 +30,7 @@ case $s in
      nmap -p$qw $ip 
    fi
     ;;
-  3) echo "Enter the ip or website to be scanned:"
+  3) #echo "Enter the ip or website to be scanned:"
     read ip
     read -r -p "Do you want to save the results to a file? [y/N] :" response
    if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
@@ -46,5 +41,3 @@ case $s in
      fi
     ;;
 esac
-echo "thank you"
-fi
