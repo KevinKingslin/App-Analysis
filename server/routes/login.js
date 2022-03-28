@@ -4,8 +4,9 @@ var mongoose = require("mongoose");
 var bcrytpt = require("bcryptjs");
 var User = require("../models/user");
 var jwt = require("jsonwebtoken");
+require("dotenv").config();
 
-const jwt_secret = "akslfash&*@#(askjsarjalsajl8999kfaskflj";
+const jwt_secret = process.env.jwt_secret;
 
 var UserLogin = async (req, res) => {
   var { username, password } = req.body;
