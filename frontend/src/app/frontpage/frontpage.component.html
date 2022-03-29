@@ -1,6 +1,10 @@
 <div id="frontpage">  
     <div class="center">
-        <button class="frontpage-button" mat-raised-button color="accent">App Analysis</button>
-        <button class="frontpage-button" mat-raised-button color="warn">Scan IoT Network</button>
+        <button class="frontpage-button" (click)="AppAnalysis()" mat-raised-button color="accent">
+            <label for="file-input" class="btn btn-default" flow-btn>
+                App Analysis    
+            <input id="file-input" type="file"style="visibility: hidden; position: absolute;"></label>
+        </button>
+        <button class="frontpage-button" (click)="ScanIOT()" mat-raised-button color="warn">Scan IoT Network</button>
     </div>
 </div>
