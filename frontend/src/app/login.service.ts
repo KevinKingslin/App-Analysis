@@ -9,9 +9,6 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LoginService {
-
-
-
   constructor(private HttpClient: HttpClient, private router: Router) { }
 
   PostLoginData(username: string, password: string){
