@@ -6,6 +6,7 @@ module.exports = (req, res, next) => {
     const token = req.headers.authorization.split(" ")[1]; //send jwt token using authorization in header with bearer keyword
     const decoded = jwt.verify(token, process.env.jwt_secret);
     req.userData = decoded;
+    //userdata is availale in req.userData field
     next();
   } catch (error) {
     res.status(400);
