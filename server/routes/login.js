@@ -26,10 +26,12 @@ var UserLogin = async (req, res) => {
       jwt_secret
     );
     res.status(202);
-    return res.json({ status: "Ok", data: token }); //this token must be stored in the frontend
+    res.json({ status: "Ok", data: token }); //this token must be stored in the frontend
     //so that after login the backend can verify the data
+    return res;
   }
-  return res.json({ status: "error", error: "Invalid Username/Password" });
+  res.json({ status: "error", error: "Invalid Username/Password" });
+  return res;
 };
 
 var changePassword = (req, res) => {
