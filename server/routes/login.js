@@ -10,6 +10,8 @@ const {
   query,
   where,
   getDocs,
+  updateDoc,
+  doc,
 } = require("firebase/firestore");
 
 const userRef = collection(db, "users");
@@ -20,6 +22,7 @@ const getUser = async (field, data) => {
   user = null;
   querySnapshot.forEach((doc) => {
     user = doc.data();
+    user.id = doc.id;
   });
   return user;
 };
@@ -37,7 +40,7 @@ var UserLogin = async (req, res) => {
   if (await bcrytpt.compare(password, user.password)) {
     var token = jwt.sign(
       {
-        id: user._id,
+        id: user.id,
         username: user.username,
       },
       jwt_secret
@@ -51,12 +54,12 @@ var UserLogin = async (req, res) => {
   return res;
 };
 
-var changePassword = (req, res) => {
-  var { token, newpassword } = req.body;
+var changePassword = async (req, res) => {
+  var { newpassword } = req.body;
   try {
-    var user = jwt.verify(token, jwt_secret);
+    var user = req.userData;
     console.log(user);
-    var id = user._id;
+    var id = user.id;
 
     if (!newpassword || typeof newpassword != "string") {
       res.status(400);
@@ -70,13 +73,11 @@ var changePassword = (req, res) => {
         error: "Password two small should be at least 7 characters",
       });
     }
-    var hashedPassword = bcrytpt.hash(newpassword, 10);
-    User.findOneAndUpdate(
-      { _id: id },
-      {
-        $set: { password: hashedPassword },
-      }
-    ).catch((err) => {
+    let salt = await bcrytpt.genSalt(10);
+    let hashedPassword = await bcrytpt.hash(newpassword, salt);
+    updateDoc(doc(db, "users", id), {
+      password: hashedPassword,
+    }).catch((err) => {
       console.log(err);
       res.status(404);
       res.json({ status: "error", error: "Database error" });
