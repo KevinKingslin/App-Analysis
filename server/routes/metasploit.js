@@ -11,7 +11,7 @@ var metasploit = async (req, res) => {
     spayload = "n";
   }
   var meta = shell.exec(
-    `${process.cwd()}/scripts/metasploit.sh`,
+    `${process.cwd()}/server/scripts/metasploit.sh`,
     (error, stdout, stderr) => {
       console.log(stdout);
       console.log(stderr);
