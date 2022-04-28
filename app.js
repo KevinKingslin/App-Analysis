@@ -11,20 +11,6 @@ var app = express();
 var port = process.env.PORT || 8000;
 var hostname = "localhost";
 //middleware
-// app.use(express.static(__dirname + "/frontend/dist"));
-// app.all("*", function (req, res) {
-//   res.status(200).sendFile(__dirname + "/frontend/dist/frontend/index.html");
-// });
-// app.set("view engine", "hbs");
-// app.set("views", path.join(__dirname, "views"));
-// app.engine(
-//   "hbs",
-//   hbs.engine({
-//     extname: "hbs",
-//     defaultLayout: "layout",
-//     layoutsDir: __dirname + "/views",
-//   })
-// );
 
 app.use(bodyParser.json());
 app.use(
