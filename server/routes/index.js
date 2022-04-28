@@ -1,11 +1,11 @@
-var express = require("express");
-var router = express.Router();
-var userRegistration = require("./register");
-var userLogin = require("./login");
-var checkAuth = require("./checkAuth");
-var nmap = require("./nmap");
-var metasploit = require("./metasploit");
-var spike = require("./spike");
+const express = require("express");
+const router = express.Router();
+const userRegistration = require("./register");
+const userLogin = require("./login");
+const checkAuth = require("./checkAuth");
+const nmap = require("./nmap");
+const metasploit = require("./metasploit");
+const spike = require("./spike");
 
 router.post("/register", userRegistration);
 router.post("/login", userLogin.UserLogin);

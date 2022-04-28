@@ -1,18 +1,34 @@
-var path = require("path");
-var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
-var bcrytpt = require("bcryptjs");
-var User = require("../models/user");
-var jwt = require("jsonwebtoken");
+const path = require("path");
+const bodyParser = require("body-parser");
+const bcrytpt = require("bcryptjs");
+const db = require("../models/firebase");
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const {
+  collection,
+  addDoc,
+  query,
+  where,
+  getDocs,
+} = require("firebase/firestore");
 
+const userRef = collection(db, "users");
+const getUser = async (field, data) => {
+  collection(db, "users");
+  const q = query(userRef, where(field, "==", data));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    return doc.data();
+  });
+  return null;
+};
 const jwt_secret = process.env.jwt_secret;
 
 var UserLogin = async (req, res) => {
   var { username, password } = req.body;
-  var user = await User.findOne({ username }).lean();
+  const user = await getUser("username", username);
   console.log(user);
-  if (!user) {
+  if (user === null) {
     res.status(400);
     return res.json({ status: "error", error: "Invalid Username/password" });
   }
