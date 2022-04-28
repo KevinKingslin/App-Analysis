@@ -1,18 +1,38 @@
-var path = require("path");
-var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
-var bcrytpt = require("bcryptjs");
-var User = require("../models/user");
-var jwt = require("jsonwebtoken");
+const path = require("path");
+const bodyParser = require("body-parser");
+const bcrytpt = require("bcryptjs");
+const db = require("../models/firebase");
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const {
+  collection,
+  addDoc,
+  query,
+  where,
+  getDocs,
+  updateDoc,
+  doc,
+} = require("firebase/firestore");
 
+const userRef = collection(db, "users");
+const getUser = async (field, data) => {
+  collection(db, "users");
+  const q = query(userRef, where(field, "==", data));
+  const querySnapshot = await getDocs(q);
+  user = null;
+  querySnapshot.forEach((doc) => {
+    user = doc.data();
+    user.id = doc.id;
+  });
+  return user;
+};
 const jwt_secret = process.env.jwt_secret;
 
 var UserLogin = async (req, res) => {
   var { username, password } = req.body;
-  var user = await User.findOne({ username }).lean();
+  const user = await getUser("username", username);
   console.log(user);
-  if (!user) {
+  if (user === null) {
     res.status(400);
     return res.json({ status: "error", error: "Invalid Username/password" });
   }
@@ -20,7 +40,7 @@ var UserLogin = async (req, res) => {
   if (await bcrytpt.compare(password, user.password)) {
     var token = jwt.sign(
       {
-        id: user._id,
+        id: user.id,
         username: user.username,
       },
       jwt_secret
@@ -34,12 +54,12 @@ var UserLogin = async (req, res) => {
   return res;
 };
 
-var changePassword = (req, res) => {
-  var { token, newpassword } = req.body;
+var changePassword = async (req, res) => {
+  var { newpassword } = req.body;
   try {
-    var user = jwt.verify(token, jwt_secret);
+    var user = req.userData;
     console.log(user);
-    var id = user._id;
+    var id = user.id;
 
     if (!newpassword || typeof newpassword != "string") {
       res.status(400);
@@ -53,13 +73,11 @@ var changePassword = (req, res) => {
         error: "Password two small should be at least 7 characters",
       });
     }
-    var hashedPassword = bcrytpt.hash(newpassword, 10);
-    User.findOneAndUpdate(
-      { _id: id },
-      {
-        $set: { password: hashedPassword },
-      }
-    ).catch((err) => {
+    let salt = await bcrytpt.genSalt(10);
+    let hashedPassword = await bcrytpt.hash(newpassword, salt);
+    updateDoc(doc(db, "users", id), {
+      password: hashedPassword,
+    }).catch((err) => {
       console.log(err);
       res.status(404);
       res.json({ status: "error", error: "Database error" });

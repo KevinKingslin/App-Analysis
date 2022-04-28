@@ -1,6 +1,5 @@
 var shell = require("shelljs");
 var process = require("process");
-var model = require("../models/user");
 
 //exname is the name of malicious executable in metasploit.sh
 //spayload is the send payload option
