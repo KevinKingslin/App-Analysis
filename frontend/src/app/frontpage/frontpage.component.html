@@ -1,10 +1,17 @@
+<mat-toolbar color="warn" class="app-header">
+    <div><a target="_blank" class="positronx center">SecIoT</a></div>
+    <span class="nav-tool-items">
+      <a mat-button routerLink="/login" routerLinkActive="active"></a>
+      <a mat-button mat-raised-button routerLink="/register" routerLinkActive="active">Log out</a>
+    </span>
+</mat-toolbar>
 <div id="frontpage">  
     <div class="center">
         <button class="frontpage-button" mat-raised-button color="accent">
             <label for="file-input" class="btn btn-default" flow-btn>
-                App Analysis    
+                Analyze App
             <input id="file-input" type="file"style="visibility: hidden; position: absolute;"></label>
         </button>
-        <button class="frontpage-button" mat-raised-button color="warn">Scan IoT Network</button>
+        <button class="frontpage-button" mat-raised-button color="primary">Scan IoT Network</button>
     </div>
 </div>
