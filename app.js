@@ -37,6 +37,7 @@ app.use(
     origin: "*",
   })
 );
+//solved cors error
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(morgan("common"));

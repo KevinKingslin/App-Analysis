@@ -11,7 +11,7 @@ const jwt_secret = process.env.jwt_secret;
 var UserLogin = async (req, res) => {
   var { username, password } = req.body;
   var user = await User.findOne({ username }).lean();
-
+  console.log(user);
   if (!user) {
     res.status(400);
     return res.json({ status: "error", error: "Invalid Username/password" });
@@ -26,7 +26,7 @@ var UserLogin = async (req, res) => {
       jwt_secret
     );
     res.status(202);
-    res.json({ status: "Ok", data: token }); //this token must be stored in the frontend
+    res.json({ status: "Ok", token: token }); //this token must be stored in the frontend
     //so that after login the backend can verify the data
     return res;
   }
@@ -54,15 +54,20 @@ var changePassword = (req, res) => {
       });
     }
     var hashedPassword = bcrytpt.hash(newpassword, 10);
-    User.updateOne(
-      { _id },
+    User.findOneAndUpdate(
+      { _id: id },
       {
         $set: { password: hashedPassword },
       }
-    );
+    ).catch((err) => {
+      console.log(err);
+      res.status(404);
+      res.json({ status: "error", error: "Database error" });
+    });
     res.status(202);
     res.json({ status: "ok" });
   } catch (error) {
+    console.log(error);
     res.status(400);
     res.json({ status: "error", error: "somebody messed around the token" });
   }

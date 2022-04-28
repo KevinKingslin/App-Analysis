@@ -7,7 +7,7 @@ const scan = async (req, res) => {
   var savefile = "n";
   var { choice, ip } = req.body;
   var nmap = shell.exec(
-    `${process.cwd()}/scripts/nmap.sh`,
+    `${process.cwd()}/server/scripts/nmap.sh`,
     (error, stdout, stderr) => {
       console.log(stdout);
       console.log(stderr);
