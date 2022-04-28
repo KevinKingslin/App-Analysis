@@ -17,10 +17,11 @@ const getUser = async (field, data) => {
   collection(db, "users");
   const q = query(userRef, where(field, "==", data));
   const querySnapshot = await getDocs(q);
+  user = null;
   querySnapshot.forEach((doc) => {
-    return doc.data();
+    user = doc.data();
   });
-  return null;
+  return user;
 };
 const jwt_secret = process.env.jwt_secret;
 

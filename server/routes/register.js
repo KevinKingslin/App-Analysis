@@ -43,11 +43,13 @@ const userRegistration = async (req, res) => {
   const checkduplicate = async (field, data) => {
     const q = query(userRef, where(field, "==", data));
     const querySnapshot = await getDocs(q);
+    let flag = false;
     querySnapshot.forEach((doc) => {
-      console.log(doc.data);
-      return true;
+      flag = true;
+      return;
     });
-    return false;
+
+    return flag;
   };
   if (
     (await checkduplicate("email", email)) ||
