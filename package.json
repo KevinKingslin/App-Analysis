@@ -4,8 +4,8 @@
   "description": "Security analysis for iot devices",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon run app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "nodemon run app.js"
   },
   "repository": {
     "type": "git",
