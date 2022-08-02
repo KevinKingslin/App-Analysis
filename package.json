@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "mongoose": "^6.3.6",
+    "universal-cookie": "^4.0.4"
+  }
+}

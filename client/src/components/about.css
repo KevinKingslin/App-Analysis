@@ -1,0 +1,27 @@
+.card2{
+  margin-left: 10rem;
+  margin-right: 10rem;
+  margin-top: 5rem;
+
+  
+
+}
+.card1{
+  margin-left: 10rem;
+  margin-right: 10rem;
+  margin-top: 5rem;
+
+  
+
+}
+.outer-about{
+  background-color: aliceblue;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.btn1{
+  margin-left: 32rem;
+}
+.card-body{
+  display: flexbox;
+}
