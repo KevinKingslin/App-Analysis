@@ -53,7 +53,7 @@ const Apktools = () => {
       <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div className="card border-0 shadow rounded-3 my-5">
           <div className="card-body p-4 p-sm-5">
-            <h5 className="card-title text-center mb-5 fw-light fs-5">MobSF</h5>
+            <h5 className="card-title text-center mb-5 fw-light fs-5">APKTools</h5>
             <form method='POST'>
                 {/* <div class="mb-3">
                     <label for="formFile" class="form-label">Default file input example</label>

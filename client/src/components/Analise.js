@@ -5,13 +5,7 @@ const Analise = () => {
   return (
     <div className='ans-outer'>
     <div className='ana'>
-      <div className='f-up'>
-      <label className="custom-file-upload">
-    <input type="file"/>
-    Upload Apk
-   </label>
-      </div>
-     <div>
+    <div>
       
 <div className='card3'>
      <div className="row">

@@ -9,16 +9,12 @@ const Spike = () => {
   const Submit= async (e)=>{
     e.preventDefault();
     const user_token = localStorage.getItem('user_token');
-    const res=await fetch("http://localhost:8001/user/spike",{
+    const res=await fetch("http://localhost:8001/user/openvas",{
       method:"POST",
       headers:{
         'Authorization': `Bearer ${user_token}`,
         "content-type":"application/json",
-      },
-      body:JSON.stringify({
-        choice, ip, ports
-      })
-
+      }
     });
     const data= await res.json();
     
@@ -51,7 +47,7 @@ const Spike = () => {
           <div className="card-body p-4 p-sm-5">
             <h5 className="card-title text-center mb-5 fw-light fs-5">Openvas</h5>
             <form method='POST'>
-              <select className="form-select mb-3" id="floatingSelect" 
+              {/* <select className="form-select mb-3" id="floatingSelect" 
               aria-label="Floating label select example" 
               value={choice}
               onChange={(e)=>setChoice(e.target.value)}>
@@ -65,7 +61,7 @@ const Spike = () => {
                 onChange={(e)=>setIP(e.target.value)}
                 placeholder="name@example.com"/>
                 <label htmlFor="floatingInput">IP</label>
-              </div>
+              </div> */}
               
               {/* { choice === 2 ?
                 <div className="form-floating mb-3">
@@ -80,7 +76,7 @@ const Spike = () => {
               } */}
 
               <div className="d-grid">
-                <button className="btn btn-primary btn-login text-uppercase fw-bold" type="submit" value="log in" onClick={Submit} >Submit
+                <button className="btn btn-primary btn-login text-uppercase fw-bold" type="submit" value="log in" onClick={Submit} >Run
                   </button>
               </div>
             </form>
