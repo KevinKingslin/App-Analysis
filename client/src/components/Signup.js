@@ -1,0 +1,112 @@
+import React from 'react';
+import { useState } from 'react';
+import './signup.css';
+
+import { useNavigate } from "react-router-dom";
+
+const Signup = () => {
+  const navigate=useNavigate();
+  const [user,setUser] =useState({
+    username: "" , email: "" , password: ""
+  });
+  let name,value;
+  const handleInputs= (e)=>{
+    console.log(e);
+    name = e.target.name;
+    value = e.target.value;
+    setUser({...user, [name]:value});
+
+  }
+  const PostData = async (e)=>{
+    e.preventDefault();
+
+    const {username,email,password} =user;
+    const res=await fetch("http://localhost:8001/register",{
+      method:"POST",
+      headers:{
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        email,username,password
+      })
+    });
+    console.log(res);
+    const data=res.json();
+    if(data.status===422|| !data){
+        window.alert("Invalid registration");
+        console.log("Invalid registration");
+    }
+    else{
+      window.alert("Registration successful");
+      console.log("Registration successful");
+      navigate('/login');
+      window.location.reload();
+    }
+  }
+  return (
+    
+<div>
+
+
+
+<body>
+  <div className="container">
+    <div className="row">
+      <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div className="card border-0 shadow rounded-3 my-5">
+          <div className="card-body p-4 p-sm-5">
+       
+            <h5 className="card-title text-center mb-5 fw-light fs-5">Register</h5>
+            <form method='POST' className='register-form'>
+              <div className="form-floating mb-3">
+                <input type="text" className="form-control" name='username' id="name" 
+                  value={user.username}
+                  onChange={handleInputs}
+                placeholder="Name"/>
+                <label htmlFor="name">Userame</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input type="email" className="form-control" name='email' id="email" 
+                  value={user.email}
+                  onChange={handleInputs}
+                placeholder="name@example.com"/>
+                <label htmlFor="email">Email Address</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input type="password" className="form-control" name='password' id="password" 
+                  value={user.password}
+                  onChange={handleInputs}
+                placeholder="Password"/>
+                <label htmlFor="password">Password</label>
+              </div>
+              {/* <div className="form-floating mb-3">
+                <input type="text" className="form-control" name='address' id="address" 
+                  value={user.address}
+                  onChange={handleInputs}
+                placeholder="Address"/>
+                <label htmlFor="adress">Address</label>
+              </div> */}
+              
+
+            
+              <div className="d-grid">
+                <button className="btn btn-primary btn-login text-uppercase fw-bold" type="submit" value='register' onClick={PostData} >Sign
+                  up</button>
+              </div>
+              <hr className="my-4"/>
+            
+            
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</div>
+   
+    
+  )
+}
+
+export default Signup

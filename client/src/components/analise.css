@@ -1,0 +1,44 @@
+.card3{
+  margin-top:2rem;
+  margin-left: 33rem;
+  margin-right: 8rem;
+  margin-bottom: 2rem;
+  
+    
+  
+}
+.custom-file-upload {
+    
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-style: italic;
+  
+  background: #FF4820;
+  margin-right: 80rem;
+  margin-top: 2rem;
+  color: #fff;
+}
+.ana-outer{
+  display: flex;
+  flex-direction: row;
+  background-color:#040C18;
+
+  
+}
+
+.card4{
+  margin-top:5rem;
+  margin-left: 35rem;
+  margin-right: 5rem;
+  
+}
+.card-text{
+  margin-bottom:5rem;
+}
+.f-up{
+  margin-left: 2rem;
+}
+.seperate{
+  margin-top: 5rem;
+}
