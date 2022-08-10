@@ -6,8 +6,8 @@ import './header.css';
 const Header = () => (
   <div className="gpt3__header section__padding" id="home">
     <div className="gpt3__header-content">
-      <h1 className="gradient__text">Let&apos;s Do Something Amazing With SECIOT</h1>
-      <p>Yet bed any for travelling assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy alteration boisterous the attachment. Party we years to order allow asked of.</p>
+      <h1 className="gradient__text">SecIoT: An Integrated Framework for Comprehensive Security and Forensic Analysis of IoT-based Smart Home and Healthcare Devices and Wearables</h1>
+      <p>The SecIoT framework supports multiple customized security analysis techniques and exploitation capabilities to facilitate holistic analysis of IoT devices and wearables. The analysis techniques supported by SecIoT are vulnerability scans, penetration testing, fuzz testing, and static analysis. The purpose of conducting such tests is to discover both reported as well as zero-day vulnerabilities prevalent in the IoT devices and determine which of these vulnerabilities are exploitable.</p>
 
       <div className="gpt3__header-content__input">
         <input type="email" placeholder="Your Email Address" />

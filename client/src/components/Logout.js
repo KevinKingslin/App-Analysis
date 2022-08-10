@@ -11,6 +11,7 @@ const Logout = () => {
       const user_token = localStorage.getItem('user_token');
       navigate('/');
       window.location.reload();
+      alert('Logout Successful')
 
       // const res=await fetch("/logout",{
       //   method:"GET",

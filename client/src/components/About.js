@@ -35,7 +35,6 @@ const navigate=useNavigate();
         throw new Error("Not found");
       }
       else{
-        alert("Welcome bro");
         
       }
     
@@ -58,9 +57,10 @@ const navigate=useNavigate();
       Featured
     </div>
     <div className="card-body">
-      <h5 className="card-title">Special title treatment</h5>
-      <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <p>To analyze the app, click below</p>
+      <h5 className="card-title">Analysis of IoT Device's Control App</h5>
+      <p className="card-text">Two techniques employed for analysis of smartphone-based app (paired with IoT device to automate control) are:
+<br/>(i)Fuzzing: It sends specially crafted input strings to crash a target program. 
+<br/>(ii)Static analysis: It identifies risk vectors that have the potential to enable malicious update, but the analysis would be happening generally during build up/deployment time rather once deployed. These tools examine source code, executables, and even documentation, to find problem before they happen, without actually running the code.</p>
       <Link to="/analise" className="btn btn-primary btn-lg">Analyze App</Link>
     </div>
     <div className="card-footer text-muted">
@@ -74,8 +74,8 @@ const navigate=useNavigate();
       Featured
     </div>
     <div className="card-body">
-      <h5 className="card-title">Special title treatment</h5>
-      <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <h5 className="card-title">Analysis of IoT Network</h5>
+      <p className="card-text">The technique employed for security analysis of a IoT network is the Penetration testing. It simulates multi stage cyber-attacks against the networked IoT devices. </p>
       <Link to="/scan" className="btn btn-primary btn-lg">Scan IOT</Link>
     </div>
     <div className="card-footer text-muted">

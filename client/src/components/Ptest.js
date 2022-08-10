@@ -18,8 +18,8 @@ const Ptest = () => {
     </ul>
   </div>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <h5 class="card-title">Port Scanning</h5>
+    <p class="card-text">It is for for device discovery and port scanning. An open-source tool, called Nmap, has been used in this framework.</p>
     <div className='ddm'>
         
         <div class="btn-group">
@@ -49,8 +49,8 @@ const Ptest = () => {
     </ul>
   </div>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <h5 class="card-title">Vulnerability Assessment</h5>
+    <p class="card-text">The purpose of this security test is to list out the vulnerabilities existing in applications and/or platform that are running on networked devices. OpenVAS (an open-source tool) has been used for vulnerability scanning and management.</p>
     <div className='ddm'>
         
         <div class="btn-group">
@@ -80,8 +80,8 @@ const Ptest = () => {
     </ul>
   </div>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <h5 class="card-title">Exploitation</h5>
+    <p class="card-text">This security test shows if one or more networked devices can be exploited by leveraging existing vulnerabilities. Open-source tool Metasploit has been used for exploiting the vulnerabilities in a variety of applications, operating systems and platforms.</p>
     <div className='ddm'>
         
         <div class="btn-group">
