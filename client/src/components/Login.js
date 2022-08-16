@@ -21,21 +21,16 @@ const Login = () => {
 
     });
     const data= await res.json();
-    
-    if(data.status===400||!data){
+    console.log(data.status)
+    if(data.status=='error'||!data){
       window.alert("Login Unsuccessful");
-
     }
     else{
       window.alert("Login Successful");
-      
-    }
-    if(data.status=="Ok"){
       localStorage.setItem('user_token', data.token);
       navigate('/');
       window.location.reload();
     }
-    
   }
 
   return (

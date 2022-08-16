@@ -6,6 +6,7 @@ const Metasploit = () => {
   const [ip,setIP]=useState('');
   const [ports,setPorts]=useState('');
   const [payload,setPayload]=useState('');
+  const [name,setName]=useState('');
   const Submit= async (e)=>{
     e.preventDefault();
     console.log(payload)
@@ -16,6 +17,10 @@ const Metasploit = () => {
         'Authorization': `Bearer ${user_token}`,
         "content-type":"application/json",
       },
+      body:JSON.stringify({
+        ip, ports, payload, name
+      })
+
     });
     const data= await res.json();
     
@@ -77,7 +82,7 @@ const Metasploit = () => {
               value={payload}
               onChange={(e)=>setPayload(e.target.value)}>
                 <option selected>Select Payload</option>
-                <option>Generic x86 Debug</option>
+                <option value="payload/generic/debug_trap">Generic x86 Debug</option>
                 <option>Generic Command Shell, Bind TCP</option>
                 <option>Generic Command Shell, Reverse TCP</option>
                 <option>Interact with Established SSH</option>
@@ -85,6 +90,14 @@ const Metasploit = () => {
                 <option>Windows Execute net user</option>
                 <option>Reflective DLL Injection, Hidden Bind Ipknock TCP</option>
               </select>
+
+              <div className="form-floating mb-3">
+                <input type="email" className="form-control" id="floatingInput" 
+                value={name}
+                onChange={(e)=>setName(e.target.value)}
+                placeholder="name@example.com"/>
+                <label htmlFor="floatingInput">File name</label>
+              </div>
               
               <div className="d-grid">
                 <button className="btn btn-primary btn-login text-uppercase fw-bold" type="submit" value="log in" onClick={Submit} >Submit
