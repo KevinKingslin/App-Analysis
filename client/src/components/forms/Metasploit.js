@@ -83,12 +83,26 @@ const Metasploit = () => {
               onChange={(e)=>setPayload(e.target.value)}>
                 <option selected>Select Payload</option>
                 <option value="payload/generic/debug_trap">Generic x86 Debug</option>
-                <option>Generic Command Shell, Bind TCP</option>
-                <option>Generic Command Shell, Reverse TCP</option>
-                <option>Interact with Established SSH</option>
-                <option>Generic x86 Tight</option>
-                <option>Windows Execute net user</option>
-                <option>Reflective DLL Injection, Hidden Bind Ipknock TCP</option>
+                <option value="generic/shell_bind_tcp">Generic Command Shell, Bind TCP</option>
+                <option value="generic/shell_reverse_tcp">Generic Command Shell, Reverse TCP</option>
+                <option value="generic/ssh/interact">Interact with Established SSH</option>
+                <option value="generic/tight_loop">Generic x86 Tight</option>
+                <option value="windows/adduser">Windows Execute net user</option>
+                <option value="windows/dllinject/bind_hidden_ipknock_tcp">Reflective DLL Injection, Hidden Bind Ipknock TCP</option>
+                <option value="windows/dllinject/bind_hidden_tcp">Reflective DLL Injection, Hidden Bind TCP</option>
+                <option value="windows/dllinject/bind_ipv6_tcp">Reflective DLL Injection, Bind IPv6 TCP Stager (Windows x86)</option>
+                <option value="windows/dllinject/bind_ipv6_tcp_uuid">Reflective DLL Injection, Bind IPv6 TCP Stager with UUID Support (Windows x86)</option>
+                <option value="windows/dllinject/bind_named_pipe">Reflective DLL Injection, Windows x86 Bind Named Pipe</option>
+                <option value="windows/dllinject/bind_nonx_tcp">Reflective DLL Injection, Bind TCP Stager (No NX or Win7)</option>
+                <option value="windows/dllinject/reverse_ord_tcp">Reflective DLL Injection, Reverse Ordinal TCP Stager (No NX or Win7)</option>
+                <option value="windows/dllinject/reverse_tcp">Reflective DLL Injection, Reverse TCP Stager</option>
+
+                <option value="windows/dllinject/reverse_tcp_allports">Reflective DLL Injection, Reverse All-Port TCP Stager</option>
+                <option value="windows/dllinject/reverse_tcp_dns">Reflective DLL Injection, Reverse TCP Stager (DNS)</option>
+                <option value="windows/dllinject/reverse_tcp_uuid">Reflective DLL Injection, Reverse TCP Stager with UUID Support</option>
+                <option value="windows/dns_txt_query_exec">DNS TXT Record Payload Download and Execution</option>
+                <option value="windows/exec">Windows Execute Command</option>
+                <option value="windows/format_all_drives">Windows Drive Formatter</option>
               </select>
 
               <div className="form-floating mb-3">
